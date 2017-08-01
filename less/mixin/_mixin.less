@@ -1,5 +1,5 @@
 
-.my_trasform(@transform){
+.my_transform(@transform){
 -o-transform+_: @transform;
 -ms-transform+_:@transform;
  -moz-transform+_: @transform; 
@@ -7,12 +7,7 @@
  transform+_: @transform ;  
 }
 
- .clearfix {
-	&:before ,&:after{
-    content: "";
-    display: table;
-    clear: both;}
-}
+//
 
 .box-sizing(@box-model) { 
 -o-box-sizing:@box-model;
@@ -54,76 +49,39 @@ box-sizing: @box-model;
     box-shadow:         @string;
 }
 
-.golden_section(@n:1){
-  width: (100% / 3) * @n;
-}
-
 @base_color: #ffc000;
 @bg_color: #f1f1f1;
-@theme_color: #2e3192;
-@accordion_bg_color: #b9beea;
 @color_white: #FFF;
 @color_black: #000;
-@input_bd_color: #888;
 @header_color: #434149;
 
 
-.theme_button(){
-    background-color: @theme_color;
-    background: url(../image/block_2.png) top left  no-repeat;
-    background-size: cover;
-    color: @color_white;
-    border: none;
-    box-shadow: none;
-    outline: none;
-    .borderRadius(0px);
-    .transition();
-    padding: 3px 6px 3px 23px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: bold;
-
-    &:hover{
-    color: @color_black;  
-    background-position-x: -12px;
-    background-color: @theme_color;
-    }
-}
-
-.sidebar_h3(){
-    background: @theme_color;
-    color: @color_white;
-    padding: 5px 10px 11px;
-}
-
-.font(@weight:normal; @size:16px; @font-family: ArialMT , sans-serif){
-    font:@arguments;
-}
-
-
-.font-face(@fontName: @default_font_fam; @fontWeight: normal; @fontStyle: normal) {
-    @font-face {
-        font-family: @fontName;
-        src: url('../fonts/@{fontName}/@{fontName}.eot');
-        src: url('../fonts/@{fontName}/@{fontName}.otf');
-        src: url('../fonts/@{fontName}/@{fontName}.eot?#iefix') format('embedded-opentype'),
-             url('../fonts/@{fontName}/@{fontName}.woff') format('woff'),
-             url('../fonts/@{fontName}/@{fontName}.ttf') format('truetype'),
-             url('../fonts/@{fontName}/@{fontName}.svg#@{fontName}') format('svg');
-        font-weight: @fontWeight;
-        font-style: @fontStyle;
-    }
-}
-
-@default_font_fam: ArialMT;
+@default_font_fam: "Neris SemiBold";
 @header_font_fam: "Neris Black";
-@slider_item_font_fam: "Neris SemiBold";
+@slider_item_font_fam: @default_font_fam;
+@light_font_fam: "Neris Light";
 
-.media_min(@size,@rules) {
-    @px: px;
-    @size_px: e("@{size}@{px}");
-    @media (max-width: @size_px) {
-        @rules();
-    };
-};
+
+
+
+// Flexbox display
+// flex or inline-flex
+.flex-display(@display: flex) {
+  display: ~"-webkit-@{display}";
+  display: ~"-ms-@{display}box"; // IE10 uses -ms-flexbox
+  display: ~"-ms-@{display}"; // IE11
+  display: @display;
+}
+
+.flex-wrap(@wrap: wrap) {
+  -webkit-flex-wrap: @wrap;
+      -ms-flex-wrap: @wrap;
+          flex-wrap: @wrap;
+}
+
+.align-items(@align: center) {
+  -webkit-align-items: @align;
+      -ms-align-items: @align;
+          align-items: @align;
+}
 

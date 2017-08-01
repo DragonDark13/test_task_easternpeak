@@ -1,0 +1,184 @@
+.mi-slider nav a {
+	display: inline-block;
+	position: relative;
+	outline: none;
+	.transition(0.2s);
+	color: @header_color;
+	text-transform: uppercase;
+    line-height: 24px;
+    padding: 0 10px;
+    padding-bottom: 38px;
+
+    .title{
+    	padding-bottom: 20px;
+    	display: block;
+    }
+
+	&:hover{
+		text-decoration: none;
+	}
+
+
+	.number{
+		color: #2f2c38;
+		font-size: 16px;
+		text-transform: uppercase;
+		font-weight: bold;
+		padding-top: 15px;
+	    display: inline-block;
+		position: absolute;
+		width: 100%;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		padding: 0 10px;
+		.opacity(0);
+		.transition;
+	}
+
+	i{
+		padding: 0 12px;
+	}
+
+	@media (max-width: 1199px) {
+		font-size: 14px;
+	}
+
+	@media (max-width: 992px) {
+		font-size: 12px;
+		text-transform: none;
+
+		.number{
+			font-size: 12px;
+		}
+	}
+
+}
+
+
+.mi-slider ul {
+	list-style-type: none;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	overflow: hidden;
+	text-align: center;
+	pointer-events: none;
+	top: @nav_height_1;
+	height: @slider_height_1;
+
+	@media (max-width: 992px) {
+		top: @nav_height_2;
+		height: @slider_height_2;
+	}
+
+
+	.no-js & {
+		position: relative;
+		left: auto;
+		bottom: auto;
+		margin: 0;
+		overflow: visible;
+	}
+
+	&.mi-current {
+		pointer-events: auto;
+	}
+
+	li {
+		.my_transform(translateX(600%));
+		.transition(0.2s);
+	}
+
+	li,
+	li>*{
+		height: 100%;
+	}
+
+	.image_container{
+		.flex-display;
+		height: 100%;
+		.align-items(center);
+	}
+
+	img{
+		width: 100%;
+		height: auto;
+	}
+
+	.no-js & li {
+		.my_transform(translateX(0%));
+	}
+
+	[class*="text"]{
+		.borderRadius(15px);
+		text-align: left;
+		padding:21px 28px 30px;
+	}
+
+	p{
+		font-size: 19px;
+		line-height: 29px;
+	    word-spacing: 0.4px;
+	}
+
+	.text_container_1{
+		margin-top: 21px;
+		border: 1px dashed #A29F9E;
+
+
+		h4{
+		color: @base_color;
+		}
+	}
+
+	.text_container_2{
+		margin-top: 16px;
+
+		h4{
+			border-bottom-width: 1px;
+			border-bottom-style: dashed;
+			display: inline-block;
+		}
+
+	}
+
+	@media (max-width: 1199px) {
+
+		 h4{
+			font-size: 18px;
+		}
+
+		p{
+			font-size: 14px;
+			line-height: 20px;
+		}
+		
+	}
+
+	@media (max-width: 768px) {
+		position: static;
+		height: auto;
+		pointer-events: auto;
+		margin-bottom: 30px;
+
+		li {
+		-webkit-animation: none !important;
+		animation: none !important;
+		-webkit-transform: translateX(0) !important;
+		transform: translateX(0) !important;
+		}
+
+		li, 
+		li>*,
+		.image_container {
+			height: auto;
+		}
+
+		 [class*=text]{
+		 	text-align: center;
+		 }
+	}
+
+}
